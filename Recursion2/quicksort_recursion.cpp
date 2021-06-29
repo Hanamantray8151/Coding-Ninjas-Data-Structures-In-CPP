@@ -28,8 +28,8 @@ int partition(int a[],int start,int end){
 	for(int i=start+1;i<=end;i++){
 		if(a[i] <= pivot){
 			count++;
+		}
 	}
-}
 	
 	int pivotIndex = start + count;	//Index of Pivot Element
 	
@@ -41,17 +41,17 @@ int partition(int a[],int start,int end){
 	while(p <= pivotIndex && q >= pivotIndex){
 		while(a[p] < pivot){	//for left side elements
 			p++;
-	  }
-	  while(a[q] > pivot){	//for right side elements
+		}
+		while(a[q] > pivot){	//for right side elements
 			q--;
-	  }
-	  if(p <= pivotIndex && q >= pivotIndex){
-		  int temp = a[p];
-		  a[p] = a[q];
-		  a[q] = temp;
-		  p++;
-		  q--;
-	  }
+		}
+		if(p < pivotIndex && q > pivotIndex){
+			int temp = a[p];
+			a[p] = a[q];
+			a[q] = temp;
+			p++;
+			q--;
+		}
 	}
 	return pivotIndex;
 }
