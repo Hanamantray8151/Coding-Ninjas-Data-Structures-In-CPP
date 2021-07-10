@@ -43,16 +43,52 @@ For the second query, we have 2 pairs in total that sum up to 10. They are, (2, 
 #include<bits/stdc++.h>
 using namespace std;
 
-int pairsum(int* a,int n,int num){
+/*int pairsum(int* a,int n,int sum){		//O(n^2)
 	int count = 0;
 	for(int i=0;i<n;i++){
 		for(int j=i+1;j<n;j++){
-			if(a[i] + a[j] == num){
+			if(a[i] + a[j] == sum){
 				count++;
 			}
 		}
 	}
 	return count;
+}*/
+
+int pairsum(int* a,int n,int sum){		//O(n*logn)
+	sort(a,a + n);
+	int start = 0;
+	int end = n - 1;
+	int numberOfPairs = 0;
+	while(start < end){
+		if(a[start] + a[end] < sum){
+			start++;
+		}else if(a[start] + a[end] > sum){
+			end--;
+		}else{				//a[i] + a[j] == sum
+			int elementAtStart = a[start];
+			int elementAtEnd = a[end];
+			if(elementAtStart == elementAtEnd){
+				int totalElementsFromStartToEnd = end - start + 1;
+				numberOfPairs = numberOfPairs + (totalElementsFromStartToEnd * (totalElementsFromStartToEnd - 1)/2);
+				return numberOfPairs;
+			}
+			int tempStart = start + 1;
+			int tempEnd = end - 1;
+			while(tempStart <= tempEnd && a[tempStart] == elementAtStart){
+				tempStart = tempStart + 1;
+			}
+			while(tempEnd >= tempStart && a[tempEnd] == elementAtEnd){
+				tempEnd = tempEnd - 1;
+			} 		
+			int elementsFromStartToTempStart = tempStart - start;
+			int elementsFromTempEndToEnd = end - tempEnd;
+			numberOfPairs = numberOfPairs + (elementsFromStartToTempStart * elementsFromTempEndToEnd);
+			start = tempStart;
+			end = tempEnd;
+		}
+	}
+	return numberOfPairs;
 }
 
 int main(){
