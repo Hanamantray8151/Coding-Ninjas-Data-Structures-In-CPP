@@ -41,7 +41,7 @@ int main(){
 	cout << "Sum : ";
 	c1.print();
 	
-  //Product of two complex numbers.
+  	//Product of two complex numbers.
 	ComplexNumbers c3(4,2);
 	ComplexNumbers c4(6,3);
 	
