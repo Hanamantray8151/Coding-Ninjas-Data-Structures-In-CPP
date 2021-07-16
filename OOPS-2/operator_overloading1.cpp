@@ -9,15 +9,15 @@ class Math{
 			this -> number = number;
 		}
 	
-		Math operator+(Math const &m2){
+		Math operator+(Math const &m2) const{
 			int sum = this -> number + m2.number;
 			return sum;
 		}
-		Math operator*(Math const &m2){
+		Math operator*(Math const &m2) const{
 			int product = this -> number * m2.number;
 			return product;
 		}
-		bool operator==(Math const &m2){
+		bool operator==(Math const &m2) const{
 			return (this -> number == m2.number);
 		}
 		void print(){
