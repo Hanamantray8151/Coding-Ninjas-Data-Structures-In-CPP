@@ -38,7 +38,7 @@ int main(){
 	
 	Math m3(n);
 	Math m4(n);
-	m3 += m4;		//+= Operator Overloading.
+	m3 += m4;	//+= Operator Overloading.
 	cout << "m3 : ";
 	m3.print();
 	cout << "m4 : ";
