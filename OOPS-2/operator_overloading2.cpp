@@ -9,7 +9,7 @@ class Math{
 			this -> num = num;
 		}
 		Math& operator++(){	//Here & used bcz it returns the value as reference to the current object.
-							          //That means this is pointing to the same object next time when we increment further.
+					//That means this is pointing to the same object next time when we increment further.
 			this -> num = this -> num + 1;
 			return *this;
 		}
