@@ -73,6 +73,5 @@ int main(){
 		head = insertNode(head,pos,element);
 		print(head);
 	}
-
 	return 0;
 }
