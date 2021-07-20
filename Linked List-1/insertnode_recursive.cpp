@@ -42,10 +42,8 @@ Node* insertNode(Node *head,int i,int data){
 		head = newNode;
 		return head;
 	}
-	Node *temp = head;
 	Node *x = insertNode(head -> next,i - 1,data);
-	temp -> next = x;
-	temp = x;
+	head -> next = x;
 	return head;
 }
 
