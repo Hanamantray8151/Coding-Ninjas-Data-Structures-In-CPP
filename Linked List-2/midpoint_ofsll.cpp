@@ -3,7 +3,8 @@ For a given singly linked list of integers, find and return the node present at 
 Note :
 If the length of the singly linked list is even, then return the first middle node.
 
-Example: Consider, 10 -> 20 -> 30 -> 40 is the given list, then the nodes present at the middle with respective data values are, 20 and 30. We return the first node with data 20.
+Example: Consider, 10 -> 20 -> 30 -> 40 is the given list, then the nodes present at the middle with respective data values are, 20 and 30. 
+We return the first node with data 20.
 Input format :
 The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
 
