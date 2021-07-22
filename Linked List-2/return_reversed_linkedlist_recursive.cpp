@@ -46,6 +46,12 @@ class Node{
 		}
 };
 
+class Pair{
+	public:
+		Node *head;
+		Node *tail;
+};
+
 Node* takeinput(){
 	int data;
 	cin >> data;
@@ -65,6 +71,28 @@ Node* takeinput(){
 		cin >> data;
 	}
 	return head;
+}
+
+Pair reverseLL(Node *head){					//O(n).
+	if(head == NULL || head -> next == NULL){
+		Pair ans;
+		ans.head = head;
+		ans.tail = head;
+		return ans;
+	}
+	
+	Pair smallans = reverseLL(head -> next);
+	smallans.tail -> next = head;
+	head -> next = NULL;
+	
+	Pair ans;
+	ans.head = smallans.head;
+	ans.tail = head;
+	return ans;
+}
+
+Node *reverseLinkedList_better(Node *head){
+	return reverseLL(head).head;
 }
 
 Node* reverseLinkedListRec(Node *head){
@@ -97,7 +125,8 @@ int main(){
 
 	while(t--){
 		Node *head = takeinput();
-		head = reverseLinkedListRec(head);
+		//head = reverseLinkedListRec(head);	this will take O(n^2) time to execute.
+		head = reverseLinkedList_better(head);
 		print(head);
 	}
 
