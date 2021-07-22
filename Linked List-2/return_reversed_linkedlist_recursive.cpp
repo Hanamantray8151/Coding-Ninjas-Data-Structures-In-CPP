@@ -73,7 +73,20 @@ Node* takeinput(){
 	return head;
 }
 
-Pair reverseLL(Node *head){			//O(n).
+Node* reverseLL_3(Node *head){				//O(n).	//Method-1.
+	if(head == NULL || head -> next == NULL){
+		return head;
+	}
+	
+	Node *smallans = reverseLL_3(head -> next);
+	
+	Node *tail = head -> next;
+	tail -> next = head;
+	head -> next = NULL;
+	return smallans;
+}
+
+Pair reverseLL_2(Node *head){				//O(n). //Method-2.
 	if(head == NULL || head -> next == NULL){
 		Pair ans;
 		ans.head = head;
@@ -81,7 +94,7 @@ Pair reverseLL(Node *head){			//O(n).
 		return ans;
 	}
 	
-	Pair smallans = reverseLL(head -> next);
+	Pair smallans = reverseLL_2(head -> next);
 	smallans.tail -> next = head;
 	head -> next = NULL;
 	
@@ -91,11 +104,11 @@ Pair reverseLL(Node *head){			//O(n).
 	return ans;
 }
 
-Node *reverseLinkedList_better(Node *head){
-	return reverseLL(head).head;
+Node* reverseLL_better(Node *head){
+	return reverseLL_2(head).head;
 }
 
-Node* reverseLinkedListRec(Node *head){		//O(n^2).
+Node* reverseLinkedListRec(Node *head){			//O(n^2). //Method-3.
 	if(head == NULL || head -> next == NULL){
 		return head;
 	}
@@ -125,8 +138,9 @@ int main(){
 
 	while(t--){
 		Node *head = takeinput();
-		//head = reverseLinkedListRec(head);	//Time Complexity = O(n^2).
-		head = reverseLinkedList_better(head);	//Time Complexity = O(n).
+		//head = reverseLinkedListRec(head);	//O(n^2).
+		//head = reverseLL_better(head);	//O(n).
+		head = reverseLL_3(head);		//O(n).
 		print(head);
 	}
 
