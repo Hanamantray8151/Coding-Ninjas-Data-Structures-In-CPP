@@ -100,7 +100,7 @@ Node* evenAfterOdd(Node *head){
 		return oddHead;
 	}
 	//For the mixed testcase 1 2 3 4 5 8,we need to place null in oddTail->next and evenTail->next 
-  //to ensure that linked list is splitted or not.
+  	//to ensure that two linked lists are splitted.
 	oddTail -> next = NULL;
 	evenTail -> next = NULL;
 	oddTail -> next = evenHead;
