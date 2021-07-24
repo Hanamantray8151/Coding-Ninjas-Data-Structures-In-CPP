@@ -98,16 +98,16 @@ Node* kReverse(Node*head,int n){
             		Node*head3=temp->next;
             		temp->next=NULL;
             		Node*h=head2; head2=reverse_linked_list(head2);
-            			if(head1==head){
-                			head1=head2;
-                			head=head2;
-            			}else{ 
-                			head1->next=head2;
-            			}
-            			h->next=head3;
-            			head1=h;
-            			head2=head3;
-            			temp=head3;
+            		if(head1==head){
+                		head1=head2;
+                		head=head2;
+            		}else{ 
+                		head1->next=head2;
+            		}
+            		h->next=head3;
+            		head1=h;
+            		head2=head3;
+            		temp=head3;
         	}else{
             		temp=temp->next;
         	}
