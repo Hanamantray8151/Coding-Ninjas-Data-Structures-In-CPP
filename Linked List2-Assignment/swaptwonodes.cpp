@@ -44,14 +44,14 @@ Sample Output 2 :
 using namespace std;
 
 class Node{
-public:
-	  int data;
-	  Node *next;
+	public:
+	  	int data;
+	 	Node *next;
   
-  	Node(int data){
-		    this->data = data;
-		    this->next = NULL;
-	  }
+  		Node(int data){
+			this->data = data;
+		    	this->next = NULL;
+	  	}
 };
 
 Node *takeinput(){
@@ -72,46 +72,43 @@ Node *takeinput(){
 	return head;
 }
 
-Node *swapNodes(Node *head, int i, int j)
-{
-    Node *temp = head;
-    Node *pre = NULL;
-    Node *p1 = NULL;
-    Node *p2 = NULL;
-    Node *c1 = head;
-    Node *c2 = head;
-    int x=0;
-    if(i == j){
-        return head;
-    }
-    while(temp != NULL){
-        if(x == i){
-            p1 = pre;
-            c1 = temp;
-        }
-        else if(x == j){
-            p2 = pre;
-            c2 = temp;
-        }
-        pre = temp;
-        temp = temp->next;
-        x++;
-    }
-    if(p1 != NULL){
-        p1->next = c2;
-    }else{
-        head = c2;
-    }
-    if(p2 != NULL){
-        p2->next = c1;
-    }else{
-        head = c1;
-    }
-    Node *TEMP = c2->next;
-    c2->next = c1->next;
-    c1->next = TEMP;
-    return head;
-
+Node *swapNodes(Node *head, int i, int j){
+    	Node *temp = head;
+   	Node *pre = NULL;
+    	Node *p1 = NULL;
+    	Node *p2 = NULL;
+    	Node *c1 = head;
+    	Node *c2 = head;
+    	int x=0;
+    	if(i == j){
+        	return head;
+    	}
+    	while(temp != NULL){
+       	 	if(x == i){
+            		p1 = pre;
+            		c1 = temp;
+        	}else if(x == j){
+            		p2 = pre;
+            		c2 = temp;
+        	}
+        	pre = temp;
+        	temp = temp->next;
+        	x++;
+    	}
+    	if(p1 != NULL){
+        	p1->next = c2;
+    	}else{
+        	head = c2;
+    	}
+   	if(p2 != NULL){
+        	p2->next = c1;
+    	}else{
+        	head = c1;
+    	}
+    	Node *TEMP = c2->next;
+    	c2->next = c1->next;
+    	c1->next = TEMP;
+    	return head;
 }
 
 void print(Node *head){
