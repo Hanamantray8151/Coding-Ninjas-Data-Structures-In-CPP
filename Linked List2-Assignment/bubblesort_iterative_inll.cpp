@@ -77,10 +77,10 @@ node* bubble_sort_LinkedList_itr(node* head){
                     			curr -> next = temp;
                     			prev = prev -> next;
                 		}else{
-                    		head=curr->next;
-                    		curr->next=head->next;
-                    		head->next=curr;
-                    		prev=head;
+                    			head=curr->next;
+                    			curr->next=head->next;
+                    			head->next=curr;
+                    			prev=head;
                 		}
             		}else{ 
                 		prev=curr;
