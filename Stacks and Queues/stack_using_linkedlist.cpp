@@ -82,11 +82,14 @@ true
 false
  Explanation of Sample Input 2:
 There are 4 queries in total.
-The first one is Query-5: It tells whether the stack is empty or not. Since the stack is empty at this point, the output is  'true'.
+The first one is Query-5: It tells whether the stack is empty or not. Since the stack is empty at this point, 
+the output is  'true'.
 
-The second one is Query-2: It pops the data from the stack. Since at this point in time, no data exist in the stack hence, it prints -1.
+The second one is Query-2: It pops the data from the stack. Since at this point in time, no data exist in the stack hence, 
+it prints -1.
 
-The third one is Query-1: It pushes the specified data 10 into the stack and since the function doesn't return anything, nothing is printed.
+The third one is Query-1: It pushes the specified data 10 into the stack and since the function doesn't return anything, 
+nothing is printed.
 
 The fourth one is Query-5: It tells whether the stack is empty at this point or not. Since the stack has one element and hence 
 it is not empty, false is printed.
