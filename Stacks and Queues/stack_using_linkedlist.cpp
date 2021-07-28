@@ -164,24 +164,32 @@ class Stack{
 		}
 };
 
-int main(){
-	Stack<char> s;
-	
-	s.push('a');
-	s.push('b');
-	s.push('c');
-	s.push('d');
-	s.push('e');
-	
-	cout << s.top() << endl;
-	
-	cout << s.pop() << endl;
-	cout << s.pop() << endl;
-	cout << s.pop() << endl;
+int main() {
+    	Stack st;
 
-	
-	cout << s.getSize() << endl;
-	cout << s.isEmpty() << endl;
+    	int q;
+    	cin >> q;
 
-	return 0;
+    	while (q--) {
+        	int choice, input;
+        	cin >> choice;
+        	switch (choice) {
+            		case 1:
+                		cin >> input;
+                		st.push(input);
+                		break;
+            		case 2:
+                		cout << st.pop() << "\n";
+               			break;
+            		case 3:
+                		cout << st.top() << "\n";
+                		break;
+            		case 4:
+                		cout << st.getSize() << "\n";
+                		break;
+            		default:
+                		cout << ((st.isEmpty()) ? "true\n" : "false\n");
+                		break;
+        	}
+    	}
 }
