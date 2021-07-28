@@ -17,55 +17,55 @@ class Queue{
 			this -> size = 0;
 			this -> capacity = totalsize;
 		}
-  
-    int getSize(){
-      return size;
-    }
-  
-    bool isEmpy(){
-      if(size == 0){
-        return true;
-      }
-      return false;
-    }
-    
-    void enqueue(int element){
-      if(size == capacity){
-        cout << "Queue is full." << endl;
-        return;
-      }
-      
-      data[nextIndex] = element;
-      nextIndex = (nextIndex + 1) % capacity;
-      
-      if(firstIndex == -1){
-        firstIndex = 0;
-      }
-      size++;
-    }
-  
-    int front(){
-      if(isEmpty()){
-        cout << "Queue is empty." << endl;
-        return 0;
-      }
-      return data[firstIndex];
-    }
-  
-    int dequeue(){
-      if(isEmpty()){
-        cout << "Queue is empty." << endl;
-        return 0;
-      }
-      int ans = data[firstIndex];
-      firstIndex = (firstIndex + 1) % capacity;
-      size--;
-      if(size == 0){
-        firstIndex = -1;
-        nextIndex = 0;
-      }
-      return ans;
-    } 
+		
+		int getSize(){
+			return size;
+		}
+		
+		bool isEmpty(){
+			if(size == 0){
+				return true;
+			}
+			return false;
+		}
+		//Insert an element into queue.
+		void enqueue(int element){
+			if(size == capacity){
+				cout << "Queue is Full." << endl;
+				return;
+			}
+			
+			data[nextIndex] = element;
+			nextIndex = (nextIndex + 1) % capacity;
+			
+			if(firstIndex == -1){
+				firstIndex = 0;
+			}
+			size++;
+		}
+		//Return the front data of a queue.
+		int front(){
+			if(isEmpty()){	//if(firstIndex == -1) we can use both.
+				cout << "Queue is Empty." << endl;
+				return 0;
+			}
+			return data[firstIndex];
+		}
+		//Deleting an element from a queue.
+		int dequeue(){
+			if(isEmpty()){
+				cout << "Queue is Empty." << endl;
+				return 0;
+			}
+			int ans = data[firstIndex];
+			firstIndex = (firstIndex + 1) % capacity;
+			size--;
+			if(size == 0){
+				firstIndex = -1;
+				nextIndex = 0;
+			}
+			return ans;
+		}
 };
 
 int main(){
