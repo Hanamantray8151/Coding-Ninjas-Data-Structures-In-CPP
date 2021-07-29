@@ -68,7 +68,7 @@ Node* takeinput(){
 
 void deleteAlternateNodes(Node *head){
         if(head == NULL){
-            return;
+                return;
         }
         Node *prev = head;
         Node *curr = head -> next;
