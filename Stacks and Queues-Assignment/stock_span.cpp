@@ -61,22 +61,22 @@ int* stockSpan(int *price,int size){
 
 int main(){
 	int size;
-    cin >> size;
+    	cin >> size;
 
-    int *input = new int[size];
-    for (int i = 0; i < size; i++) {
-        cin >> input[i];
-    }
+    	int *input = new int[size];
+    	for (int i=0;i<size;i++){
+        	cin >> input[i];
+    	}
 
-    int *output = stockSpan(input, size);
-    for (int i = 0; i < size; i++) {
-        cout << output[i] << " ";
-    }
+    	int *output = stockSpan(input, size);
+    	for (int i=0;i<size;i++){
+        	cout << output[i] << " ";
+    	}
 
-    cout << "\n";
+    	cout << "\n";
 
-    delete[] input;
-    delete[] output;
+    	delete[] input;
+    	delete[] output;
 
 	return 0;
 }
