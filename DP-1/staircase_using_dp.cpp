@@ -20,9 +20,11 @@ Sample Output 2:
 */
 
 #include<bits/stdc++.h>
-using namespace std;
+using namespace std;	
 
-long helper(int n,int *dp){
+long staircase(int n){
+	long dp[n + 1];
+	
 	dp[0] = 1;
 	dp[1] = 1;
 	dp[2] = 2;
@@ -31,14 +33,6 @@ long helper(int n,int *dp){
 		dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
 	}
 	return dp[n];
-}
-
-long staircase(int n){
-	int *ans = new int[n + 1];
-	for(int i=0;i<=n;i++){
-		ans[i] = -1;
-	}
-	return helper(n,ans);
 }
 
 int main(){
