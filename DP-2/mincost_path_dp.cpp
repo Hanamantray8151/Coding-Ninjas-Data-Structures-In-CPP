@@ -148,17 +148,17 @@ int minCostPath(int **arr,int m,int n){ //Dp Approach.
 
 int main(){
     int **arr,m,n;
-	  cin >> m >> n;
-	  arr = new int *[m];
-	  for (int i=0;i<m;i++){
-		    arr[i] = new int[n];
-	  }
-	  for (int i=0;i<m;i++){
-		    for (int j=0;j<n;j++){
-			      cin >> arr[i][j];
-		    }
-	  }
-	  cout << minCostPath(arr,m,n) << endl;
+	cin >> m >> n;
+	arr = new int *[m];
+	for(int i=0;i<m;i++){
+	    arr[i] = new int[n];
+	}
+	for(int i=0;i<m;i++){
+	    for(int j=0;j<n;j++){
+		cin >> arr[i][j];
+	    }
+	}
+	cout << minCostPath(arr,m,n) << endl;
 
     return 0;
 }
