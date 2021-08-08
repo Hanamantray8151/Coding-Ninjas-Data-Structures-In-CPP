@@ -10,6 +10,12 @@ class TreeNode{
 		TreeNode(T data){
 			this -> data = data;
 		}
+		
+		~TreeNode(){	//One by One from last it will delete enire tree.
+			for(int i=0;i<children.size();i++){
+				delete children[i];
+			}
+		}
 };
 
 TreeNode<int>* takeinput(){
@@ -70,6 +76,9 @@ int main(){
 	
 	postOrder(root);
 	cout << endl;
+	
+	//Delete tree after functionality.
+	delete root;	//This will call destructor.
 	
 	return 0;
 }
