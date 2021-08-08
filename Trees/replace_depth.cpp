@@ -76,24 +76,24 @@ void replaceWithDepthValue(TreeNode<int>* root){
 
 void printLevelAtNewline(TreeNode<int>* root){
 	queue<TreeNode<int>*> q;
-    q.push(root);
-    q.push(NULL);
-    while(!q.empty()){
-        TreeNode<int>* first = q.front();
-        q.pop();
-        if (first == NULL){
-            if (q.empty()){
-                break;
-            }
-            cout << endl;
-            q.push(NULL);
-            continue;
-        }
-        cout << first->data << " ";
-        for(int i=0;i<first->children.size();i++){
-            q.push(first->children[i]);
-        }
-    }
+    	q.push(root);
+    	q.push(NULL);
+    	while(!q.empty()){
+        	TreeNode<int>* first = q.front();
+        	q.pop();
+        	if(first == NULL){
+            		if(q.empty()){
+                		break;
+            		}
+            		cout << endl;
+            		q.push(NULL);
+            		continue;
+        	}
+        	cout << first->data << " ";
+        	for(int i=0;i<first->children.size();i++){
+            		q.push(first->children[i]);
+        	}
+    	}
 }
 
 int main(){
