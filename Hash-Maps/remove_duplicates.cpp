@@ -6,7 +6,7 @@ vector<int> removeDuplicates(int *a,int n){
 	unordered_map<int,bool> seenNumber;
 	
 	for(int i=0;i<n;i++){
-		if(seenNumber.count(a[i]) > 0){
+		if(seenNumber[a[i]]){
 			continue;
 		}
 		seenNumber[a[i]] = true;
