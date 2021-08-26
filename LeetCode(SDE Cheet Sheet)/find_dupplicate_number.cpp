@@ -1,4 +1,4 @@
-//O(n * log n).
+//O(n * log n) + O(n).
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
