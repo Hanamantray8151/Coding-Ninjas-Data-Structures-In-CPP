@@ -50,92 +50,114 @@ Sample Output 2 :
 using namespace std;
 
 class Node{
-	public:
-	  	int data;
-	 	Node *next;
-  
-  		Node(int data){
-			this->data = data;
-		    	this->next = NULL;
-	  	}
+public:
+    int data;
+    Node* next;
+
+    Node(int data){
+        this -> data = data;
+        this -> next = NULL;
+    }
 };
 
-Node *takeinput(){
-	int data;
-	cin >> data;
-	Node *head = NULL, *tail = NULL;
-	while (data != -1){
-		Node *newnode = new Node(data);
-		if (head == NULL){
-			head = newnode;
-			tail = newnode;
-		}else{
-			tail->next = newnode;
-			tail = newnode;
-		}
-		cin >> data;
-	}
-	return head;
-}
-
-Node *reverse_linked_list(Node *head){
-    	if(head==NULL || head->next==NULL){
-        	return head;
-    	}
-    	Node* smallhead=reverse_linked_list(head->next);
-    	head->next->next=head;
-    	head->next=NULL;
-    	return smallhead;
-}
-Node* kReverse(Node*head,int n){ 
-    	if(n==1 || n== 0){
-        	return head;
-    	}
-    	int i=1;
-    	Node*temp=head,*head1=head,*head2=head;
-    	while(temp!=NULL){
-        	if(i%n==0||temp->next==NULL){ 
-            		Node*head3=temp->next;
-            		temp->next=NULL;
-            		Node*h=head2; head2=reverse_linked_list(head2);
-            		if(head1==head){
-                		head1=head2;
-                		head=head2;
-            		}else{ 
-                		head1->next=head2;
-            		}
-            		h->next=head3;
-            		head1=h;
-            		head2=head3;
-            		temp=head3;
-        	}else{
-            		temp=temp->next;
-        	}
-        	i++;
-   	}
+Node* takeinput(){
+    int data;
+    cin >> data;
+    Node* head = NULL;
+    Node* tail = NULL;
+    while(data != -1){
+        Node* newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }else{
+            tail -> next = newNode;
+            tail = newNode;
+        }
+        cin >> data;
+    }
     return head;
 }
 
-void print(Node *head){
-	Node *temp = head;
-	while (temp != NULL){
-		cout << temp->data << " ";
-		temp = temp->next;
-	}
-	cout << endl;
+int length(Node* head){
+    Node* temp = head;
+    int len = 0;
+    while(temp != NULL){
+        temp = temp -> next;
+        len++;
+    }
+    return len;
+}
+
+Node* reverse(Node* head,Node* temp){
+    Node* prev = NULL;
+    Node* fwd = NULL;
+    Node* curr = head;
+
+    while(curr != temp){
+        fwd = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = fwd;
+    }
+    return prev;
+}
+
+Node* kReverse(Node* head,int k){
+    if(head == NULL){
+        return head;
+    }
+    Node* temp = head;
+    for(int i=0;i<k;i++){
+        if(temp == NULL){
+            return head;
+        }
+        temp = temp -> next;
+    }
+    Node* newHead = reverse(head,temp);
+    Node* tempHead = kReverse(temp,k);
+    head -> next = tempHead;
+    return newHead;
+}
+
+Node* reverseLastRemainingNodes(Node* head,int k){
+    int len = length(head);
+    Node* temp = head;
+    Node* prev = NULL;
+    int count = 0;
+    if(len % k != 0){
+        int modValue = len % k;
+        while(count < len - modValue){
+            prev = temp;
+            temp = temp -> next;
+            count++;
+        }
+        Node* last = temp;
+        while(last != NULL){
+            last = last -> next;
+        }
+        Node* newHead = reverse(temp,last);
+        prev -> next = newHead;
+    }
+    return head;
+}
+
+void print(Node* head){
+    Node* temp = head;
+    while(temp != NULL){
+        cout << temp -> data << " ";
+        temp = temp -> next;
+    }
+    cout << endl;
 }
 
 int main(){
-	int t;
-	cin >> t;
+    Node* head = takeinput();
+    int k;
+    cin >> k;
+    head = kReverse(head,k);
+    Node* newhead = reverseLastRemainingNodes(head,k);
+    print(newhead);
 
-	while (t--){
-		Node *head = takeinput();
-		int k;
-		cin >> k;
-		head = kReverse(head, k);
-		print(head);
-	}
-	
-	return 0;
+    return 0;
 }
